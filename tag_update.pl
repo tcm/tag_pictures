@@ -1,10 +1,12 @@
+#!/usr/bin/perl
+
 # (jb) Juni 2009
-#
+
 use strict;
 use File::Find;
 #use File::Spec::Functions;
 
-my $str_postfix = ".jpg";
+my $str_postfix = ".JPG";
 my $str_tag = "Comment";
 my $str_nextname;
 my $str_nextname_s;
@@ -12,7 +14,7 @@ my $str_command_output;
 my $str_output_file = "tags_find.dat";
 my $str_outpath;
 
-@ARGV = qw(f:/test_bilder) unless @ARGV; # Hier steht unser zu durchsuchendes
+@ARGV = qw(./testbilder) unless @ARGV; # Hier steht unser zu durchsuchendes
                                          # Verzeichnis.
 			
 # Ausgabe-File anlegen
@@ -27,13 +29,13 @@ sub show_all {
  if ($str_nextname =~ /$str_postfix/ ) {                                   # Unser(e) Suchmuster.
                                          # Filenamen ausgeben.
   	$str_command_output=`exiftool -P -$str_tag $str_nextname`;
-	$str_nextname_s =substr($str_nextname,3,);
+	$str_nextname_s =$str_nextname;
 
 	
 	print "$str_nextname ";
 	
 	print "$str_command_output";
-	print OUT "$str_nextname_s  $str_command_output";
+	print OUT "$str_nextname_s  $str_command_output\n";
 	#system($str_command);  
  
  }                                                                      

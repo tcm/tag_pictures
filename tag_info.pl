@@ -1,8 +1,10 @@
+#!/usr/bin/perl
+
 # (jb) Juni 2009
 use strict;
 use Data::Dumper;
 
-my $str_postfix=".jpg";
+my $str_postfix=".JPG";
 my $str_path;
 my $str_nextname;
 my $str_tag = "Comment";

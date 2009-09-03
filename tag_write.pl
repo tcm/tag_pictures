@@ -1,9 +1,11 @@
+#!/usr/bin/perl
+
 # (jb) Juni 2009
 use strict;
 use Data::Dumper;
 
-my $str_prefix="IMG_";
-my $str_postfix=".jpg";
+my $str_prefix="XIMG_";
+my $str_postfix=".JPG";
 my $str_path;
 my $str_tag="Testtag";
 my $int_tag_id;
