@@ -15,7 +15,7 @@ my $str_output_file = "tags_find.dat";
 my $str_outpath;
 
 @ARGV = qw(./testbilder) unless @ARGV; # Hier steht unser zu durchsuchendes
-                                         # Verzeichnis.
+                                       # Verzeichnis.
 			
 # Ausgabe-File anlegen
 open (OUT, ">$str_output_file") || die "$str_output_file konnte nicht angelegt werden.\n";
