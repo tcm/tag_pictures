@@ -12,6 +12,7 @@ my @arr1= ();
 my $item;
 my $str_command;
 my $str_filename;
+my $taste;
 
 ########################################
 # Einlesen der Text-Tags aus einem File.
@@ -57,3 +58,4 @@ foreach ( @ARGV )  {
 	print $str_command."\n\n";
 	system($str_command);
 }
+$taste = <STDIN>;

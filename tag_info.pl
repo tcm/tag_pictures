@@ -7,6 +7,7 @@ use Data::Dumper;
 my $str_tag = "Comment";
 my $str_command;
 my $str_filename;
+my $taste;
 
 foreach (@ARGV) {
 
@@ -18,3 +19,5 @@ foreach (@ARGV) {
 	#print $str_command."\n\n";
 	system($str_command);
 }
+$taste = <STDIN>;
+
