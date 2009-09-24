@@ -2,12 +2,13 @@
 
 # (jb) September 2009
 use strict;
-use Data::Dumper;
+use FindBin '$Bin';
+use File::Spec;
 
 my $str_tag="Testtag";
 my $int_tag_id;
 my $int_i;
-my $str_tag_file = "tags.txt";
+my $str_tag_file;
 my @arr1= ();
 my $item;
 my $str_command;
@@ -17,6 +18,8 @@ my $taste;
 ########################################
 # Einlesen der Text-Tags aus einem File.
 ########################################
+$str_tag_file=File::Spec->catfile($Bin, "tags.txt");
+
 print "Tag:\n";
 open(IN, $str_tag_file) || die "$str_tag_file kann nicht gelesen werden.\n";
 while (<IN>) {
