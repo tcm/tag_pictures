@@ -1,41 +1,39 @@
-#!/usr/bin/perl
-
 use strict;
 use File::Basename;
-use Getopt::Std;
+use File::Spec;
+use File::Glob ':glob';
 
-my %options=();
-getopts("o:",\%options);
-# like the shell getopt, "d:" means d takes an argument
-print "-o $options{o}\n" if defined $options{o};
-print "Unprocessed by Getopt::Std:\n" if $ARGV[0];
-#foreach (@ARGV) {
-#  print "$_\n";
-#}
 
-my $str_path = $options{o};
+my @files;
 my $str_filepattern = "IMG*.JPG";
-my $str_pattern = $str_path.$str_filepattern;
+my $str_path;
+my $str_path2;
+
 my $file;
-my $filename;
-my $opt_s;
-my $opt_n;
+my $filename_neu;
 
 
+foreach (@ARGV) {
 
-    my @files = glob($str_pattern);
+    $str_path = File::Spec->catfile( $_, $str_filepattern );
+    print "$str_path\n\n";
+
+    @files = bsd_glob "$str_path";
 
     foreach my $file (@files) {
+	    #print "$file\n";
 
-        
-	$filename = basename($file);
-	 
-	print "$file --> X$filename\n";
-	rename ($file, $str_path."X".$filename);
+	    $filename_neu = "X".basename($file);
+	    $str_path2 = File::Spec->catfile( $_, $filename_neu );
+
+            print "$file --> $str_path2\n";
+
+	    rename ($file, $str_path2);
 
     }
-
-    exit 0;
+}
+exit 0;
 
 
     
+
