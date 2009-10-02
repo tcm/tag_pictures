@@ -10,6 +10,7 @@ my $str_path;
 my $str_path2;
 
 my $file;
+my $filename_alt;
 my $filename_neu;
 
 
@@ -23,10 +24,11 @@ foreach (@ARGV) {
     foreach my $file (@files) {
 	    #print "$file\n";
 
-	    $filename_neu = "X".basename($file);
+	    $filename_alt = basename($file);
+	    $filename_neu = "X".$filename_alt;
 	    $str_path2 = File::Spec->catfile( $_, $filename_neu );
 
-            print "$file --> $str_path2\n";
+            print "$filename_alt --> $filename_neu\n";
 
 	    rename ($file, $str_path2);
 
