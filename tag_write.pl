@@ -12,7 +12,6 @@ my $str_tag_file;
 my @arr1= ();
 my $item;
 my $str_command;
-my $str_filename;
 my $taste;
 
 ########################################
@@ -47,12 +46,7 @@ $str_tag = $arr1[$int_tag_id];
 #print "\n$str_tag";
 
 foreach ( @ARGV )  {
-        $str_filename = $_;
 
-	##########################
-	# Status-Meldung ausgeben.
-	##########################
-	#print "$str_filename\n";
 
 	################################################################################
 	# Kommando-Zeile zusammensetzen und so oft ausfuehren, wie der Interval vorgibt.
