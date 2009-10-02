@@ -6,12 +6,11 @@ use Data::Dumper;
 
 my $str_tag = "Comment";
 my $str_command;
-my $str_filename;
 my $taste;
 
 foreach (@ARGV) {
 
-        $str_filename = $_;
+       
 	###################################################
 	# Tags fuer alle Dateien im Verzeichnis ausgeben.
 	###################################################
