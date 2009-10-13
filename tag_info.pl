@@ -2,7 +2,6 @@
 
 # (jb) September 2009
 use strict;
-use Data::Dumper;
 
 my $str_tag = "Comment";
 my $str_command;
