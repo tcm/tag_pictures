@@ -1,0 +1,8 @@
+Hilfskipts um aus den Bilderverzeichnissen eine Foto-DVD
+zu erstellen.
+Benötigt wird:
+
+dir2slideshow
+dvd-slideshow
+makeisofs
+dvd-menu
