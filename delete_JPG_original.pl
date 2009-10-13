@@ -1,32 +1,23 @@
 #!/usr/bin/perl
 
 @ARGV = qw(/home/juergen/bilder/) unless @ARGV; # Hier steht unser zu durchsuchendes
-                                           # Verzeichnis.
+                                                # Verzeichnis.
 use File::Find;
 
 my $file_name;
-my $sum;
-my $file_name_ziel;
+my $taste;
 
 sub show_all {
 
  $file_name = $File::Find::name;
  
  if ($file_name =~ /\.JPG_original/) {         # Unser(e) Suchmuster.
-   print "$file_name\n";                   # Filenamen ausgeben.
-   $file_name_ziel = $file_name;   
+   print "Deleted: $file_name\n";              # Filenamen ausgeben.
 
-  #$file_name_ziel =~ s#.*/##;            # Pfadangaben abschneiden.
-  #$file_name_ziel =~ s/flv/avi/;         
-  #print "$file_name_ziel\n"; 
+  unlink($file_name) || print "$file_name konnte nicht geloescht werden.\n";
 
-  system("rm $file_name");
-
-  #$sum += -s;                                         
  }                                                  
 }
 
 find (\&show_all, @ARGV);
-
-#print "$sum Bytes\n"; 
-
+$taste = <STDIN>;
