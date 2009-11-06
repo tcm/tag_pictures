@@ -49,7 +49,7 @@ foreach ( @ARGV )  {
 
 
 	################################################################################
-	# Kommando-Zeile zusammensetzen und so oft ausfuehren, wie der Interval vorgibt.
+	# Kommando-Zeile zusammensetzen.
 	################################################################################
 	$str_command="exiftool -P -comment=\"".$str_tag."\" ".$_;
 	print $str_command."\n\n";
