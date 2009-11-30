@@ -6,6 +6,7 @@ use FindBin '$Bin';
 use File::Spec;
 
 my $str_tag="Testtag";
+my $str_tag_temp="Testtag";
 my $int_tag_id;
 my $int_i;
 my $str_tag_file;
@@ -73,21 +74,34 @@ foreach ( @ARGV )  {
 
         if (-f $_) {                                          # File?
                 print "$output";
+
                 ($s1,$s2,$s3) = split(/,/,$output);           # Tag von Comment und Filename trennen.
+
                 if ($s3) {                                    # Nur anhaengen, wenn Comment schon was enthaelt.
- 			$str_tag = $s3.";".$str_tag;
+                        chop($s3);                            # Letztes Zeichen abtrennen.
+ 			$str_tag = $s3.";".$str_tag;          # Alter Inhalt + neuer Tag.
 		}
         }
+
         if (-d $_) {                                           # Verzeichnis?
                 print "$output";
+                $str_tag_temp = $str_tag;                
+
+
                 @arr1 = split(/\n/,$output);                   # Einzelzeilen der Ausgabe
-                foreach $line (@arr1) {                        # in Array speichern.
-                      if ($line  =~ /^TAG/) {
-                                ($s1,$s2,$s3) = split(/,/,$line);
+
+                foreach $line (@arr1) {                              # in Array speichern.
+                      if ($line  =~ /^TAG/) {                        # Wenn die Zeile mit TAG beginnt...
+                                $str_tag = $str_tag_temp;
+                                ($s1,$s2,$s3) = split(/,/,$line);    # Tag von Comment und Filename trennen.
+
+                                if ($s3) {                           # Nur anhaengen, wenn Comment schon was enthaelt.
+                                        # chop($s3);                 # Letztes Zeichen abtrennen.
+                                	$str_tag = $s3.";".$str_tag; # Alter Inhalt + neuer Tag.
+                                }
                       }
-		      if ($s3) {                           # Nur anhaengen, wenn Comment schon was enthaelt.
-                      		$str_tag = $s3.";".$str_tag;
-                      }
+
+                      
 		}
         }
 	##############################################################
