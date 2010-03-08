@@ -1,33 +1,28 @@
 #!/usr/bin/perl
 
-@ARGV = qw(/home/juergen/bilder/) unless @ARGV; # Hier steht unser zu durchsuchendes
-                                                # Verzeichnis.
 use File::Find;
 
 
-my $file_name;
-my $muster;
+
+sub show_pics;
+
+find (\&show_pics, '/home/juergen/bilder' );
 
 
-sub show_all {
-
- $file_name = $File::Find::name;
+exit 0;
 
 
-$muster = chop($zeile);
- if ($file_name =~ /$muster/) {           # Unser(e) Suchmuster.
-   print "$file_name\n";                  # Filenamen ausgeben.
+sub show_pics {
+        my $filename = $File::Find::name;
+        
+        #open (IN, "/home/juergen/projects/foto_dvd/leute/filelist.txt") || die "Die Datei konnte nicht zum Lesen geoeffnet werden.\n";
+        
+        #while ( <IN> ) {
+        
+		#/^$_\z/s && print("$filename\n");
 
- }                                                  
+		/^IMG_2683\.JPG\z/s && print("$filename\n");
+		/^XIMG_1343\.JPG\z/s && print("$filename\n");
+	#}
+ 	#close(IN);
 }
-
-
-open (IN, "filelist.txt") || die "Die Datei konnte nicht zum Lesen geoeffnet werden.\n";
-while ( <IN> ) {
-
-        $zeile = $_;
-        #print "$zeile"; 
-	find (\&show_all, @ARGV);
-}
-
-close(IN);
