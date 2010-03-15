@@ -1,36 +1,45 @@
 #!/usr/bin/perl
 
 use File::Find;
+use File::Copy;
+
+my $line;
+my $file_pattern;
+my $piclist_file = "/home/juergen/projects/foto_dvd/jahreszeiten/filelist.txt";
+my $destination_dir = "/home/juergen/projects/foto_dvd/jahreszeiten/";
 
 
-my $file_pattern  ="XIMG_0832.JPG";
-
-
-
-open (IN, "/home/juergen/projects/foto_dvd/leute/filelist.txt") 
+# Liste mit Files einlesen.
+# In jeder Zeile steht ein Filename.
+#####################################
+open (IN, $piclist_file) 
 || die "Die Datei konnte nicht zum Lesen geoeffnet werden.\n";
         
 while ( <IN> ) {
 
-	$file_pattern = $_;
-        chop($file_pattern);
+	$line = $_;
+        chop($line);                   # Newline abschneiden.
+        $file_pattern = qr/^$line\z/s; # Regex compilieren.
+        #print "$file_pattern\n";
+
 	find (\&show_pics, '/home/juergen/bilder' );
 } 
 close(IN);
 
 
 
-# find (\&show_pics, '/home/juergen/bilder' );
-
 
 exit 0;
 
 
 sub show_pics {
-        my $file_name = $File::Find::name;
+        my $file_name = $File::Find::name; # Filename komplett mit Pfad.
        
-	/$file_pattern/s && print("$file_name\n");
-
-        #	/^IMG_2683\.JPG\z/s && print("$filename\n");
-	#	/^XIMG_1343\.JPG\z/s && print("$filename\n");
+	if ( $_ =~ $file_pattern ) { # Nur den Filennamen mit dem Regex vergleichen.
+          print"$file_name\n";
+          copy($file_name,$destination_dir);
+	};
+        
+        #	/^IMG_2683\.JPG\z/s && print("$file_name\n");
+	#	/^XIMG_1343\.JPG\z/s && print("$file_name\n");
 }
