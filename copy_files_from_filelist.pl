@@ -39,7 +39,7 @@ sub show_pics {
           print"$file_name\n";
           copy($file_name,$destination_dir);
 	};
-        
-        #	/^IMG_2683\.JPG\z/s && print("$file_name\n");
-	#	/^XIMG_1343\.JPG\z/s && print("$file_name\n");
+         
+        # Erzeugt mit find2perl /home/juergen/bilder -name "XIMG_1343.JPG"       
+	# /^XIMG_1343\.JPG\z/s && print("$file_name\n");
 }
