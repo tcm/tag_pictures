@@ -20,4 +20,5 @@ sub show_all {
 }
 
 find (\&show_all, @ARGV);
+print "Fertig!\n";
 $taste = <STDIN>;

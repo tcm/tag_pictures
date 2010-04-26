@@ -105,7 +105,7 @@ foreach ( @ARGV )  {
 		}
         }
 	##############################################################
-	# Kommando-Zeile zum Schreiben zusammensetzen.
+	# Kommandozeile zum Schreiben zusammensetzen.
 	##############################################################
 	$str_command="exiftool -P -comment=\"".$str_tag."\" ".$_;
 	print $str_command."\n\n";
