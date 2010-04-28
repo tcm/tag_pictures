@@ -5,8 +5,7 @@ use File::Copy;
 
 my $line;
 my $file_pattern;
-my $piclist_file = "/home/juergen/projects/foto_dvd/jahreszeiten/filelist.txt";
-my $destination_dir = "/home/juergen/projects/foto_dvd/jahreszeiten/";
+my $piclist_file = "/home/juergen/pic/filelist.txt";
 my $str_command;
 my $str_tag = "Testtext";
 
@@ -24,7 +23,7 @@ while ( <IN> ) {
         $file_pattern = qr/^$line\z/s; # Regex compilieren.
         #print "$file_pattern\n";
 
-	find (\&show_pics, '/home/juergen/bilder' );
+	find (\&show_pics, '/home/juergen/pic' );
 } 
 close(IN);
 
