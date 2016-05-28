@@ -27,6 +27,6 @@ sub show_all {
 }
 
 
-open (OUT, ">filelist_sha1.txt") || die "Die Datei konnte nicht zum Schreiben geoeffnet werden.\n";
+open (OUT, ">filelist_sha1_3.txt") || die "Die Datei konnte nicht zum Schreiben geoeffnet werden.\n";
 find (\&show_all, @ARGV);
 close(OUT);
